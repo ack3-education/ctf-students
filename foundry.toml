@@ -1,0 +1,22 @@
+[profile.default]
+src = "src"
+test = "test"
+out = "out"
+cache_path = "cache"
+# Uniswap V3 core pins =0.8.12, so the compiler is chosen per file. Keep the
+# challenge sources and tests on 0.8.24.
+auto_detect_solc = true
+compilation_restrictions = [
+    { paths = "src/**", version = "=0.8.24" },
+    { paths = "test/*.t.sol", version = "=0.8.24" },
+]
+evm_version = "cancun"
+optimizer = true
+optimizer_runs = 200
+remappings = [
+    "@openzeppelin/=lib/openzeppelin-contracts/",
+    "@uniswap/v3-core/=lib/v3-core/",
+]
+
+[lint]
+lint_on_build = false
